@@ -1,0 +1,120 @@
+/**
+ * This is the central home page
+ *
+ */
+
+ @mixin transformSkewScale($x, $y){
+    -webkit-transform: skew($x) scaleX($y);
+    -ms-transform: skew($x) scaleX($y);
+    transform: skew($x) scaleX($y);
+}
+
+.home {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    top: 0; left: 0;
+    padding: 150px 20px 50px;
+    background: var(--dark-blue);
+    color: white;
+    @include md("sm") {
+        padding: 150px 0px 50px;
+    }
+    .container {
+        max-width: 1400px;
+        margin: auto;
+        padding: 0 15px;
+    }
+
+    .thumbnail {
+        position: relative;
+        display: block;
+        color: black;
+        text-align: center;
+        width: 90%;
+        margin: 0px 10px;
+        cursor: pointer;
+        user-select: none;
+        overflow: hidden;
+        &-img {
+            max-width: 100%;
+            min-width: 100%;
+            height: 400px;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+            opacity: 0.06;
+        }
+
+        &-detail {
+            position: absolute;
+            transition: all 0.3s ease-in-out;
+            top: 35%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+            margin: 0;
+            opacity: 0;
+            z-index: 1;
+            &__title {
+                padding: 0 30px 10px;
+                color: black;
+                display: inline-block;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 20px;
+                margin-top: -45px;
+            }
+            &__btn {
+                border: 0!important;
+                width: auto;
+                padding: 0 20px;
+                border-radius: 45px;
+                height: 45px;
+                font-size: 12px;
+                line-height: 45px;
+                font-family: sans-serif;
+                text-transform: uppercase;
+                background: black;
+                color: white;
+                cursor: pointer;
+                &:hover{
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        &:after {
+            background: var(--white-gr);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            content: '';
+            opacity: 0.7;
+            @include transformSkewScale(-45deg, 0);
+            transition: all 0.3s ease-in-out;
+        }
+
+        &:hover {
+            &:after {
+              @include transformSkewScale(-45deg, 1.5);
+              transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+            .thumbnail-detail{
+                transform: translate3d(0%, 0%, 0);
+                -webkit-transition-delay: 0.2s;
+                transition-delay: 0.2s;
+                opacity: 1;
+                &__title {
+                    transition-delay: 0.2s;
+                    margin-top: 0px;
+                }
+            }
+          }
+    }
+
+    .react-multiple-carousel__arrow {
+        z-index: 1;
+    }
+}

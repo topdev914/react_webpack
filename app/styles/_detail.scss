@@ -1,0 +1,98 @@
+.detail {
+  padding: 30px 0;
+  height: 100vh;
+  &-title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 30px;
+    color: var(--yellow-2);
+    text-transform: uppercase;
+  }
+  &-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #000;
+    box-shadow: 0 6px 20px 0 rgb(255 235 167 / 25%);
+    padding: 60px 20px;
+    margin: 0px 10px;
+    @include md("md") {
+      margin: 0px 100px;
+    }
+
+  }
+  &-img{
+    padding: 20px 40px;
+    width: 100%;
+    opacity: 0.1;
+    &__content {
+      width: 100%;
+    }
+    @include md("md") {
+      width: 37%;
+    }
+    
+    @include md("sd") {
+      width: 27%;
+      margin-bottom: initial;
+    }
+    
+  }
+
+  &-content{
+    width: 100%;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    @include md("md") {
+      width: 60%;
+      padding: 10px 40px;
+    }
+    @include md("sd") {
+      width: 70%;
+      margin-bottom: initial;
+    }
+
+    &:last-child {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  &-item{
+    &__title{
+      color: var(--yellow-2);
+      font-size: 20px;
+      margin-bottom: 10px;
+      @include md("md") {
+        font-size: 25px;
+      }
+    }
+    &__text{
+      font-size: 15px;
+      margin-bottom: 20px;
+      @include md("md") {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .btn-back {
+    height: initial;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 20px;
+    float:right;
+    background-color: transparent;
+    border: 1px solid var(--yellow);
+    color: var(--yellow);
+    cursor: pointer;
+    @include md("md") {
+      width: 200px;
+    }
+    &:hover {
+      color: var(--yellow-2);
+      transition: all 250ms linear;
+    }
+  }
+}

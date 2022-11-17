@@ -1,0 +1,195 @@
+/**
+ * The menu is technically the header of the site, it contains the styles for the drop down of the Search Bar.
+ *
+ */
+
+ $lineHeightForNav: 1.7;
+ $lineHeightForSearch: 50px;
+ 
+ 
+ .menu {
+     // ...
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    background-color: black;
+    padding: 10px 0;
+    &-container {
+      width: 100%;
+      padding: 0 20px;
+      text-align: left;
+      h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 24px;
+        line-height: $lineHeightForNav;
+        color: var(--yellow);
+        text-align: left;
+        display: inline-block;
+      }
+    }
+    &-nav {
+      display: flex;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      top: 0;
+      padding: 150px 20px;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      align-items: center;
+      background: black;
+      overflow-y: hidden;
+      opacity: 0;
+      visibility: hidden;           
+      transition: all ease-in-out 0.3s;
+      @include md("lg") {
+        position: static;
+        visibility: visible;
+        opacity: 1;
+        padding: 0px;
+        flex-direction: row;
+        justify-content: center;
+      }
+      &__item {
+        font-family: Helvetica, Arial, Sans-Serif;
+        font-size: 17px;
+        line-height: $lineHeightForNav;
+        text-transform: uppercase;
+        text-decoration: none;
+        white-space: nowrap;
+        border-bottom: 1px solid transparent;
+        color: var(--yellow);
+        margin-right: 0px;
+
+        @include md("lg") {
+            margin-right: 20px;
+        }
+      }
+    }
+    &-holder {
+      position: relative;
+      width: 100%;
+      max-width: $siteWidth;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+     }
+     &-tool {
+      display: flex;
+      align-items: center;
+
+      &__search {
+        display: inline-block;
+        margin-right: 10px;
+        color: var(--yellow);
+        font-size: 20px;
+        line-height: $lineHeightForNav;
+        font-family: Helvetica, Arial, Sans-Serif;
+        line-height: 1.7;
+        text-transform: uppercase;
+        text-decoration: none;
+        white-space: nowrap;
+        border-bottom: 1px solid transparent;
+        color: var(--yellow);
+        margin-right: 20px
+      }
+      .hamburger {
+        display: block;
+        width: 20px;
+        height: 15px;
+        position: relative;
+        cursor: pointer;
+        z-index: 1000;
+        @include md("lg") {
+          display: none;
+        }
+        span {
+          width: 100%;
+          border: 1px solid white;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          opacity: 1;
+          transition: all ease-in-out 0.3s;
+          &:last-child {
+              top: 100%;
+              transition: all ease-in-out 0.3s;
+          }
+          &:first-child {
+              top: 0;
+              transition: all ease-in-out 0.3s;
+          }
+        }
+      }
+     }
+     .search-container {
+      position: absolute;
+      background: transparent;
+      z-index: 20;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-bottom: 1px solid #CCC;
+      width: 0px;
+      left: 50%;
+      top: 70px;
+      transform: translate(-50%, 10px);
+      transition: all ease-in-out 0.3s;
+      input[type='text'] {
+        background: transparent;
+        font-size: 20px;
+        padding-bottom: 10px;
+        width: 100%;
+        border: none;
+        color: white;
+        outline: none;
+      }
+      a {
+        position: absolute;
+        right: 0;
+        top: 37%;
+        transform: translate(0, -50%);
+        color: var(--yellow);
+        font-size: 24px;
+        line-height: 1;
+        height: initial;
+        display:none;
+        transition: all ease-in-out 0.3s;
+      }
+      &.showing { 
+        width: 300px;
+        transition: all ease-in-out 0.3s;
+        a {
+            display: block;
+            transition: all ease-in-out 0.3s;
+        }
+      }
+     }
+     &.mobile {
+         .menu-tool {
+             .hamburger {
+                 span {
+                     opacity: 0;
+                     transition: all ease-in-out 0.3s;
+                     &:last-child {
+                         opacity: 1;
+                         transform: rotate(50deg);
+                         transform-origin: 100% 100% ;
+                         transition: all ease-in-out 0.3s;
+                     }
+                     &:first-child {
+                         opacity: 1;
+                         transform: rotate(-50deg);
+                         transform-origin: 100% 0;
+                         transition: all ease-in-out 0.3s;
+                     }
+                 }
+             }
+         }
+         .menu-nav {
+             opacity: 1;
+             visibility: visible;
+             transition: all ease-in-out 0.3s;
+         }
+     }
+ }
